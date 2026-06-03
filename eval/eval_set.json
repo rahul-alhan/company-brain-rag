@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "eng-auth-migration-engineering-member",
+      "user": "alice@acme.com",
+      "query": "What did engineering decide about the auth migration?",
+      "must_contain": ["OIDC", "auth"],
+      "expects_cross_source": true,
+      "forbidden_chunk_ids": []
+    },
+    {
+      "id": "eng-auth-migration-contractor-no-access",
+      "user": "contractor@acme.com",
+      "query": "What did engineering decide about the auth migration?",
+      "must_contain": [],
+      "expects_cross_source": false,
+      "forbidden_chunk_ids": [
+        "slack::thread-001::0",
+        "notion::page-eng-auth-rfc::0"
+      ]
+    },
+    {
+      "id": "design-system-public-info",
+      "user": "carol@acme.com",
+      "query": "What are the brand color guidelines for the website?",
+      "must_contain": ["#1E40AF"],
+      "expects_cross_source": false,
+      "forbidden_chunk_ids": []
+    },
+    {
+      "id": "security-incident-restricted",
+      "user": "alice@acme.com",
+      "query": "What were the findings of the Q1 security review?",
+      "must_contain": ["S3 bucket"],
+      "expects_cross_source": false,
+      "forbidden_chunk_ids": []
+    },
+    {
+      "id": "security-incident-leak-test",
+      "user": "carol@acme.com",
+      "query": "What were the findings of the Q1 security review?",
+      "must_contain": [],
+      "expects_cross_source": false,
+      "forbidden_chunk_ids": [
+        "drive::file-q1-sec-review::0",
+        "notion::page-sec-incidents::0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+embedding:
+  provider: openai
+  model: text-embedding-3-small
+  dim: 1536
+
+chunking:
+  size_tokens: 384
+  overlap_tokens: 64
+
+retrieval:
+  k_dense: 20
+  k_sparse: 20
+  k_final: 6
+  rrf_k: 60
+
+recency:
+  enabled: true
+  half_life_days:
+    slack: 30
+    notion: 180
+    drive: 365
+
+generation:
+  provider: anthropic
+  model: claude-opus-4-7
+  max_tokens: 800
+  require_citations: true
+
+sources:
+  slack: data/slack_sample.jsonl
+  notion: data/notion_sample.jsonl
+  drive: data/drive_sample.jsonl
+
+index_dir: index/
