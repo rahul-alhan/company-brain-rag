@@ -7,4 +7,5 @@ __pycache__/
 *.pkl
 index/
 .pytest_cache/
+.pytest_tmp/
 .DS_Store
